@@ -9,20 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+	
+	@IBOutlet weak var todosView: UITableView!
+	var todos = [NCMBObject]()
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath)
-		TodoCell.textLabel!.text = todos[indexPath.row]
+		TodoCell.textLabel!.text = (self.todos[indexPath.row] as! NCMBObject).object(forKey: "todo") as! String
 		return TodoCell
 	}
 	
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		if UserDefaults.standard.object(forKey: "TodoList") != nil {
-			todos = UserDefaults.standard.object(forKey: "todos") as! [String]
-		}
+		let query = NCMBQuery(className: "todoClass")
+		query?.findObjectsInBackground({(objects, err) in
+			if err != nil {
+			} else {
+				self.todos = objects as! [NCMBObject]
+				self.todosView?.reloadData()
+			}
+		})
 	}
-
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.

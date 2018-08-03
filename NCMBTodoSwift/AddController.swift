@@ -7,16 +7,28 @@
 
 import UIKit
 
-var todos = [String]()
-
 class AddController: UIViewController {
 	@IBOutlet weak var TodoTextField: UITextField!
 	
 	@IBAction func TodoAddButton(_ sender: Any) {
-		todos.append(TodoTextField.text!)
-		TodoTextField.text = ""
-		UserDefaults.standard.set( todos, forKey: "todos" )
-		self.performSegue(withIdentifier: "toList", sender: nil)
+		let obj = NCMBObject(className: "todoClass")
+		obj?.setObject(TodoTextField.text!, forKey: "todo")
+		obj?.saveInBackground({(err) in
+			if err != nil {
+				let alertController = UIAlertController(
+					title: "エラー",
+					message: err?.localizedDescription,
+					preferredStyle: UIAlertControllerStyle.alert
+				)
+				let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default){ (action: UIAlertAction) in
+					print("Hello")
+				}
+				alertController.addAction(okAction)
+				self.present(alertController,animated: true, completion: nil)
+			} else {
+				self.performSegue(withIdentifier: "toList", sender: nil)
+			}
+		})		
 	}
 	
 	override func viewDidLoad() {

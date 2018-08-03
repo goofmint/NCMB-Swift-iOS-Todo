@@ -15,7 +15,7 @@
 		C740B47A2113F589005B5395 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C740B4782113F589005B5395 /* LaunchScreen.storyboard */; };
 		C740B4852113F58A005B5395 /* NCMBTodoSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740B4842113F58A005B5395 /* NCMBTodoSwiftTests.swift */; };
 		C740B4902113F58A005B5395 /* NCMBTodoSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740B48F2113F58A005B5395 /* NCMBTodoSwiftUITests.swift */; };
-		C740B4A021140A71005B5395 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740B49F21140A71005B5395 /* AddController.swift */; };
+		C740B4A52114162B005B5395 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740B4A42114162B005B5395 /* AddController.swift */; };
 		D7526F51BD47155C9A2950FD /* Pods_NCMBTodoSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9114FFB16712FED1E500E3AD /* Pods_NCMBTodoSwiftTests.framework */; };
 		FD1A47E3AC963695C80C6A6D /* Pods_NCMBTodoSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07078370B06F8D93A00DB818 /* Pods_NCMBTodoSwiftUITests.framework */; };
 /* End PBXBuildFile section */
@@ -59,7 +59,8 @@
 		C740B48B2113F58A005B5395 /* NCMBTodoSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NCMBTodoSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C740B48F2113F58A005B5395 /* NCMBTodoSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCMBTodoSwiftUITests.swift; sourceTree = "<group>"; };
 		C740B4912113F58A005B5395 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C740B49F21140A71005B5395 /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddController.swift; path = "/Volumes/SD/Dropbox/moongift-team/DevRel/niftycloud_mb/NCMBTodoSwift/NCMBTodoSwift/AddController.swift"; sourceTree = "<absolute>"; };
+		C740B4A1211415BF005B5395 /* NCMBTodo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NCMBTodo-Bridging-Header.h"; sourceTree = "<group>"; };
+		C740B4A42114162B005B5395 /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		E2CB28EADD827E82D6598E08 /* Pods-NCMBTodoSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCMBTodoSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NCMBTodoSwiftUITests/Pods-NCMBTodoSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,13 +140,14 @@
 		C740B46E2113F588005B5395 /* NCMBTodoSwift */ = {
 			isa = PBXGroup;
 			children = (
-				C740B49F21140A71005B5395 /* AddController.swift */,
+				C740B4A42114162B005B5395 /* AddController.swift */,
 				C740B46F2113F588005B5395 /* AppDelegate.swift */,
 				C740B4712113F588005B5395 /* ViewController.swift */,
 				C740B4732113F588005B5395 /* Main.storyboard */,
 				C740B4762113F589005B5395 /* Assets.xcassets */,
 				C740B4782113F589005B5395 /* LaunchScreen.storyboard */,
 				C740B47B2113F589005B5395 /* Info.plist */,
+				C740B4A1211415BF005B5395 /* NCMBTodo-Bridging-Header.h */,
 			);
 			path = NCMBTodoSwift;
 			sourceTree = "<group>";
@@ -380,9 +382,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C740B4A021140A71005B5395 /* AddController.swift in Sources */,
 				C740B4722113F588005B5395 /* ViewController.swift in Sources */,
 				C740B4702113F588005B5395 /* AppDelegate.swift in Sources */,
+				C740B4A52114162B005B5395 /* AddController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +567,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.moongift.NCMBTodoSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "./NCMBTodoSwift/NCMBTodo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -584,6 +587,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.moongift.NCMBTodoSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "./NCMBTodoSwift/NCMBTodo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
