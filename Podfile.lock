@@ -1,0 +1,26 @@
+PODS:
+  - Keys (1.0.1)
+  - NCMB (2.4.3)
+
+DEPENDENCIES:
+  - Keys (from `Pods/CocoaPodsKeys`)
+  - NCMB (from `https://github.com/NIFCloud-mbaas/ncmb_ios.git`)
+
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
+  NCMB:
+    :git: https://github.com/NIFCloud-mbaas/ncmb_ios.git
+
+CHECKOUT OPTIONS:
+  NCMB:
+    :commit: ff4c625eaa4d0789d03ad90ed572f7bfad8691e4
+    :git: https://github.com/NIFCloud-mbaas/ncmb_ios.git
+
+SPEC CHECKSUMS:
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
+  NCMB: 7b88a86be4a770bd260f42295c7649b00f57f178
+
+PODFILE CHECKSUM: 2a1a8af238618de8142582510343de9148c1efda
+
+COCOAPODS: 1.5.2
