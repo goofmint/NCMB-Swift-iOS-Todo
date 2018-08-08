@@ -13,6 +13,12 @@ class AddController: UIViewController {
 	@IBAction func TodoAddButton(_ sender: Any) {
 		let obj = NCMBObject(className: "todoClass")
 		obj?.setObject(TodoTextField.text!, forKey: "todo")
+		let acl = NCMBACL.init()
+		acl.setPublicReadAccess(false)
+		acl.setPublicWriteAccess(false)
+		acl.setReadAccess(true, for: NCMBUser.current())
+		acl.setWriteAccess(true, for: NCMBUser.current())
+		obj?.acl = acl
 		obj?.saveInBackground({(err) in
 			if err != nil {
 				let alertController = UIAlertController(
