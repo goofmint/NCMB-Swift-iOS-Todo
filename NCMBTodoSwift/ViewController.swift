@@ -11,24 +11,20 @@ import UIKit
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 	
 	@IBOutlet weak var todosView: UITableView!
-	var todos = [NCMBObject]()
+	var todos = [String]()
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath)
-		TodoCell.textLabel!.text = (self.todos[indexPath.row] as! NCMBObject).object(forKey: "todo") as! String
+		let user = NCMBUser.current()
+		TodoCell.textLabel!.text = self.todos[indexPath.row]
 		return TodoCell
 	}
 	
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		let query = NCMBQuery(className: "todoClass")
-		query?.findObjectsInBackground({(objects, err) in
-			if err != nil {
-			} else {
-				self.todos = objects as! [NCMBObject]
-				self.todosView?.reloadData()
-			}
-		})
+		let user = NCMBUser.current()
+		self.todos = user?.object(forKey: "todos") != nil ? user?.object(forKey: "todos") as! Array : []
+		self.todosView?.reloadData()
 	}
 	
 	override func didReceiveMemoryWarning() {

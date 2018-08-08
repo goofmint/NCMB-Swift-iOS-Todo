@@ -11,26 +11,10 @@ class AddController: UIViewController {
 	@IBOutlet weak var TodoTextField: UITextField!
 	
 	@IBAction func TodoAddButton(_ sender: Any) {
-		let obj = NCMBObject(className: "todoClass")
-		obj?.setObject(TodoTextField.text!, forKey: "todo")
-		let acl = NCMBACL.init()
-		acl.setPublicReadAccess(false)
-		acl.setPublicWriteAccess(false)
-		acl.setReadAccess(true, for: NCMBUser.current())
-		acl.setWriteAccess(true, for: NCMBUser.current())
-		obj?.acl = acl
-		obj?.saveInBackground({(err) in
+		let user = NCMBUser.current()
+		user?.addObjects(from: [TodoTextField.text!], forKey: "todos")
+		user?.saveInBackground({(err) in
 			if err != nil {
-				let alertController = UIAlertController(
-					title: "エラー",
-					message: err?.localizedDescription,
-					preferredStyle: UIAlertControllerStyle.alert
-				)
-				let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default){ (action: UIAlertAction) in
-					print("Hello")
-				}
-				alertController.addAction(okAction)
-				self.present(alertController,animated: true, completion: nil)
 			} else {
 				self.performSegue(withIdentifier: "toList", sender: nil)
 			}
