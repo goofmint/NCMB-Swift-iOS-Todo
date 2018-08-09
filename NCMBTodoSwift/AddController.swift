@@ -11,14 +11,14 @@ class AddController: UIViewController {
 	@IBOutlet weak var TodoTextField: UITextField!
 	
 	@IBAction func TodoAddButton(_ sender: Any) {
+		let task = NCMBObject(className: "todoClass2")
+		task?.setObject(TodoTextField.text!, forKey: "task")
+		task?.save(nil)
 		let user = NCMBUser.current()
-		user?.addObjects(from: [TodoTextField.text!], forKey: "todos")
-		user?.saveInBackground({(err) in
-			if err != nil {
-			} else {
-				self.performSegue(withIdentifier: "toList", sender: nil)
-			}
-		})		
+		let relation = user?.relationforKey("tasks2")
+		relation?.add(task)
+		user?.save(nil)
+		self.performSegue(withIdentifier: "toList", sender: nil)
 	}
 	
 	override func viewDidLoad() {

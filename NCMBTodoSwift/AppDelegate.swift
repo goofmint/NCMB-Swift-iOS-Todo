@@ -21,33 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		NCMB.setApplicationKey(keys.applicationKey , clientKey: keys.clientKey)
 		let currentUser = NCMBUser.current()
 		if currentUser != nil {
+			currentUser?.fetch(nil)
 			return true
-		}
-
-		let uuid = UserDefaults.standard.string(forKey: "uuid")
-		if uuid == nil {
-			NCMBAnonymousUtils.logIn { (user, error) in
-				if error != nil {
-					print ("Log in failed")
-					print (error ?? "")
-				} else {
-					print("Logged in")
-					let authData = user!.object(forKey: "authData") as! [String: Any]
-					let uuid = (authData["anonymous"] as! [String: String])["id"]
-					UserDefaults.standard.set(uuid, forKey: "uuid")
-				}
-			}
-		} else {
-			let user = NCMBUser.init()
-			let anonymousDic = ["anonymous": ["id": uuid]]
-			user.setObject(anonymousDic, forKey: "authData")
-			user.signUpInBackground({(error) in
-				if error != nil {
-					print("Error")
-				} else {
-					print("Log in")
-				}
-			})
 		}
 		return true
 	}

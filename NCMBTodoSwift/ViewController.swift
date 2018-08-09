@@ -11,20 +11,33 @@ import UIKit
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 	
 	@IBOutlet weak var todosView: UITableView!
-	var todos = [String]()
+	@IBAction func backToTop(segue: UIStoryboardSegue) {}
+	@IBOutlet weak var addButton: UIBarButtonItem!
+	
+	var todos = [NCMBObject]()
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath)
-		let user = NCMBUser.current()
-		TodoCell.textLabel!.text = self.todos[indexPath.row]
+		TodoCell.textLabel!.text = self.todos[indexPath.row].object(forKey: "task") as? String
 		return TodoCell
 	}
 	
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		let user = NCMBUser.current()
-		self.todos = user?.object(forKey: "todos") != nil ? user?.object(forKey: "todos") as! Array : []
-		self.todosView?.reloadData()
+		addButton.isEnabled = !(user == nil)
+		let relation = user?.relationforKey("tasks2")
+		relation?.query().findObjectsInBackground({(results, error) in
+			if error != nil {
+			} else {
+				self.todos = results as! [NCMBObject]
+				self.todosView?.reloadData()
+			}
+		})
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -34,7 +47,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		//戻り値の設定(表示するcell数)
-		return todos.count
+		return self.todos.count
 	}
 	
 }
