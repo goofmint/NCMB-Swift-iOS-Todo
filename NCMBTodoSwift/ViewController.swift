@@ -7,12 +7,41 @@
 //
 
 import UIKit
+import FacebookCore
+import FacebookLogin
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 	
 	@IBOutlet weak var todosView: UITableView!
 	@IBAction func backToTop(segue: UIStoryboardSegue) {}
 	@IBOutlet weak var addButton: UIBarButtonItem!
+	
+	@IBAction func fbLoginButton(_ sender: Any) {
+		LoginManager().logIn(readPermissions: [.email], viewController: self, completion: {
+			result in
+			switch result {
+			case let .success( _, _, token):
+				let facebookInfo = [
+					"id": token.userId,
+					"access_token": token.authenticationToken,
+					"expiration_date": token.expirationDate
+					] as [String : Any]
+				let user = NCMBUser.init()
+				user.signUp(withFacebookToken: facebookInfo, with: {(error) in
+					if error != nil {
+						print("Login failed")
+					} else {
+						print("Login successful")
+						self.viewWillAppear(true)
+					}
+				})
+			case let .failed(error):
+				print("error:\(error)")
+			case .cancelled:
+				print("cancelled")
+			}
+		})
+	}
 	
 	var todos = [NCMBObject]()
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1ACBE0179BD710BA2C652995 /* Pods_NCMBTodoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85359C8E5399ED38B1C4CBBC /* Pods_NCMBTodoSwift.framework */; };
-		C70ECB55211B1DC70073B4EF /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70ECB54211B1DC70073B4EF /* RegisterController.swift */; };
 		C740B4702113F588005B5395 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740B46F2113F588005B5395 /* AppDelegate.swift */; };
 		C740B4722113F588005B5395 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740B4712113F588005B5395 /* ViewController.swift */; };
 		C740B4752113F588005B5395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C740B4732113F588005B5395 /* Main.storyboard */; };
@@ -47,7 +46,6 @@
 		9114FFB16712FED1E500E3AD /* Pods_NCMBTodoSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NCMBTodoSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FD3258DD3739104C91998AD /* Pods-NCMBTodoSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCMBTodoSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NCMBTodoSwiftTests/Pods-NCMBTodoSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		AFB422762511FB85465BA7F2 /* Pods-NCMBTodoSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCMBTodoSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NCMBTodoSwiftTests/Pods-NCMBTodoSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C70ECB54211B1DC70073B4EF /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		C740B46C2113F588005B5395 /* NCMBTodoSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NCMBTodoSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C740B46F2113F588005B5395 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C740B4712113F588005B5395 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 				C740B4782113F589005B5395 /* LaunchScreen.storyboard */,
 				C740B47B2113F589005B5395 /* Info.plist */,
 				C740B4A1211415BF005B5395 /* NCMBTodo-Bridging-Header.h */,
-				C70ECB54211B1DC70073B4EF /* RegisterController.swift */,
 			);
 			path = NCMBTodoSwift;
 			sourceTree = "<group>";
@@ -347,11 +344,25 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NCMBTodoSwift/Pods-NCMBTodoSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/NCMB/NCMB.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NCMB.framework",
 			);
@@ -385,7 +396,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C70ECB55211B1DC70073B4EF /* RegisterController.swift in Sources */,
 				C740B4722113F588005B5395 /* ViewController.swift in Sources */,
 				C740B4702113F588005B5395 /* AppDelegate.swift in Sources */,
 				C740B4A52114162B005B5395 /* AddController.swift in Sources */,
@@ -564,6 +574,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YX944FB478;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = NCMBTodoSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -584,6 +598,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YX944FB478;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = NCMBTodoSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

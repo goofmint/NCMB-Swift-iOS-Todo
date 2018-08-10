@@ -7,7 +7,11 @@ target 'NCMBTodoSwift' do
 
   # Pods for NCMBTodoSwift
   pod 'NCMB', :git => 'https://github.com/NIFCloud-mbaas/ncmb_ios.git'
-  
+  pod 'Bolts'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
+    
   target 'NCMBTodoSwiftTests' do
     inherit! :search_paths
     # Pods for testing
